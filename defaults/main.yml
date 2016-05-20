@@ -1,5 +1,11 @@
 ---
 shorewall_enabled: "Yes"
+shorewall_startup: 1
+shorewall_wait_interface: "eth0"
+shorewall_options: ""
+shorewall_startoptions: ""
+shorewall_restartoptions: ""
+shorewall_safestop: 0
 
 shorewall_zones:
 - zone: "fw"
