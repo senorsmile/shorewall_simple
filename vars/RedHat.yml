@@ -9,3 +9,6 @@ shorewall_service_config: "/etc/default/shorewall"
 shorewall_service: "shorewall"
 shorewall_initlog: "/var/log/shorewall_init.log"
 
+shorewall_init_file: "/etc/shorewall/init"
+shorewall_start_file: "/etc/shorewall/start"
+shorewall_stop_file: "/etc/shorewall/stop"
