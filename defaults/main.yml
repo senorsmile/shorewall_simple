@@ -6,6 +6,7 @@ shorewall_options: ""
 shorewall_startoptions: ""
 shorewall_restartoptions: ""
 shorewall_safestop: 0
+shorewall_ip_forwarding: "Off" #["Off","On"]
 
 shorewall_zones:
 - zone: "fw"
