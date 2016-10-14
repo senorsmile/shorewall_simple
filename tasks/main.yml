@@ -64,6 +64,10 @@
 - name: Generate rules
   template: src=rules.j2 dest={{ shorewall_rules_file }}
   notify: Restart Shorewall Service 
+
+- name: Generate rules
+  template: src=mangle.j2 dest={{ shorewall_mangle_file }}
+  notify: Restart Shorewall Service 
   
 - name: Generate shorewall.conf 
   template: src=shorewall.conf.j2 dest={{ shorewall_config_file }}
