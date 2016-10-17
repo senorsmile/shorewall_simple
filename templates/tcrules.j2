@@ -1,0 +1,54 @@
+#http://shorewall.net/manpages/shorewall-mangle.html
+
+#ACTION - command[(parameters)][:chain-designator]
+
+#ACTION    SOURCE    DEST         PROTO   PORT(S)       SOURCE  USER    TEST
+
+{#--#}{% if shorewall_mangle is defined %}
+{#----#}{% for r in shorewall_mangle %}
+
+{{ r.command }}
+{#------#}{% if r.parameters is defined -%}
+({{ r.parameters }})
+{#------#}{%- endif -%}
+{#------#}{%- if r.chain is defined -%}
+:{{ r.chain }}
+{#------#}{%- endif %}
+{#------#}{%- if r.source is defined %}
+	{{ r.source }}
+{#------#}{%- else %}
+	-
+{#------#}{%- endif %}
+{#------#}{%- if r.dest is defined %}
+	{{ r.dest }}
+{#------#}{%- else %}
+	-
+{#------#}{%- endif %}
+{#------#}{%- if r.proto is defined %}
+	{{ r.proto }}
+{#------#}{%- else %}
+	-
+{#------#}{%- endif %}
+{#------#}{%- if r.dport is defined %}
+	{{ r.dport }}
+{#------#}{%- else %}
+	-
+{#------#}{%- endif %}
+{#------#}{%- if r.sport is defined %}
+	{{ r.sport }}
+{#------#}{%- else %}
+	-
+{#------#}{%- endif %}
+{#------#}{%- if r.user is defined %}
+	{{ r.user }}
+{#------#}{%- else %}
+	-
+{#------#}{%- endif %}
+{#------#}{%- if r.test is defined %}
+	{{ r.test }}
+{#------#}{%- else %}
+	-
+{#------#}{%- endif %}
+
+{#----#}{% endfor %}
+{#--#}{% endif %}

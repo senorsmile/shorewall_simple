@@ -36,17 +36,14 @@
 - name: Shorewall fix for docker - init
   template: src=init.j2 dest={{ shorewall_init_file }}
   notify: Restart Shorewall Service
-  when: shorewall_docker_fix_needed
 
-- name: Shorewall fix for docker - stop
+- name: Generate custom stop rules
   template: src=stop.j2 dest={{ shorewall_stop_file }}
   notify: Restart Shorewall Service
-  when: shorewall_docker_fix_needed
 
-- name: Shorewall fix for docker - start
+- name: Generate custom start rules
   template: src=start.j2 dest={{ shorewall_start_file }}
   notify: Restart Shorewall Service
-  when: shorewall_docker_fix_needed
 
 # Generate configuration
 - name: Generate zones
@@ -65,8 +62,8 @@
   template: src=rules.j2 dest={{ shorewall_rules_file }}
   notify: Restart Shorewall Service 
 
-- name: Generate rules
-  template: src=mangle.j2 dest={{ shorewall_mangle_file }}
+- name: Generate mangle rules (tcrules)
+  template: src=tcrules.j2 dest={{ shorewall_tcrules_file }}
   notify: Restart Shorewall Service 
   
 - name: Generate shorewall.conf 

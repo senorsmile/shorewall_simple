@@ -1,3 +1,8 @@
+#-----------------------
+### custom rules for docker (if shorewall < v5.0.6)
+#-----------------------
+{# #}
+{#--#}{% if shorewall_docker_fix_needed is defined and shorewall_docker_fix_needed %}
 if [ -f /etc/shorewall/docker_rules ]; then
     iptables-restore -n </etc/shorewall/docker_rules
     run_iptables -t nat -I PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
@@ -9,3 +14,15 @@ if [ -f /etc/shorewall/docker_rules ]; then
 
     rm -f /etc/shorewall/docker_rules
 fi
+{#--#}{% endif %}
+{# #}
+
+#-----------------------
+### custom rules from ansible variables
+#-----------------------
+{# #}
+{#--#}{% if shorewall_start is defined %}
+{#----#}{% for line in shorewall_start %}
+{{ line }}
+{#----#}{% endfor %}
+{#--#}{% endif %}
