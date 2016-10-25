@@ -1,6 +1,9 @@
+#SOURCE         DEST            POLICY          LOG           BURST:LIMIT
+#                                               LEVEL
 {% for p in shorewall_policies %}
 {% if p.source is defined and p.source != '' %}
 {{ p.source }}	{{ p.destination }}	{{ p.policy }}	{% if p.log_level is defined %}{{ p.log_level }}{% else %}-{% endif %}	{% if p.burst_limit is defined %}{{ p.burst_limit }}{% else %}-{% endif %}
 {% endif %}
 
 {% endfor %}
+all  all  {{ default_policy | default('DROP') }}  info

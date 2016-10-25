@@ -27,10 +27,6 @@ shorewall_policies:
 - source: "net"
   destination: "$FW"
   policy: "ACCEPT"
-- source: "all"
-  destination: "all"
-  policy: "DROP"
-  log_level: "info"
 
 shorewall_rules: []
 
