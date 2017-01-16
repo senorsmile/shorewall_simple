@@ -1,5 +1,6 @@
 {% for s in shorewall_rules %}
-{% if ansible_os_family != 'Archlinux' %}
+#TODO FIXME: only insert SECTION if shorewall v4.  Below lines are the current workaround
+{% if ( ansible_os_family != 'Archlinux' and (ansible_distribution_major_version < 16 and ansible_distribution == 'Ubuntu') ) %}
 SECTION {{ s.section }}
 {% endif %}
 {% for r in s.rules %}
