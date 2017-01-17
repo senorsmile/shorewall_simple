@@ -2,6 +2,7 @@
 shorewall_package: "shorewall"
 shorewall_zones_file: "/etc/shorewall/zones"
 shorewall_interfaces_file: "/etc/shorewall/interfaces"
+shorewall_params_file: "/etc/shorewall/params"
 shorewall_policy_file: "/etc/shorewall/policy"
 shorewall_rules_file: "/etc/shorewall/rules"
 shorewall_tcrules_file: "/etc/shorewall/tcrules"

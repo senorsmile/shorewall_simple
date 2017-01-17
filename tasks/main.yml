@@ -54,6 +54,10 @@
   template: src=interfaces.j2 dest={{ shorewall_interfaces_file }}
   notify: Restart Shorewall Service 
 
+- name: Generate params
+  template: src=params.j2 dest={{ shorewall_params_file }}
+  notify: Restart Shorewall Service 
+
 - name: Generate policy
   template: src=policy.j2 dest={{ shorewall_policy_file }}
   notify: Restart Shorewall Service 
