@@ -22,20 +22,10 @@
 #       net     eth0            130.252.100.255 routefilter,norfc1918
 #
 ###############################################################################
-{% if shorewall_params_begin is defined and shorewall_params_begin %}
-{% for key,value in shorewall_params_begin.iteritems() %}
-{{ key }}={{ value }}
-{% endfor %}
-{% endif %}
-
 {% if shorewall_params is defined and shorewall_params %}
-{% for key,value in shorewall_params.iteritems() %}
+{% for item in shorewall_params %}
+{% for key,value in item.iteritems() %}
 {{ key }}={{ value }}
 {% endfor %}
-{% endif %}
-
-{% if shorewall_params_end is defined and shorewall_params_end %}
-{% for key,value in shorewall_params_end.iteritems() %}
-{{ key }}={{ value }}
 {% endfor %}
 {% endif %}
