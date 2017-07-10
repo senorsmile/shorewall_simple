@@ -10,7 +10,7 @@
   notify: Restart Shorewall Service 
 
 - name: Install the required packages in Debian derivatives
-  apt: name={{ shorewall_package }} state=installed update_cache=yes
+  apt: name={{ shorewall_package }} state=installed update_cache=yes cache_valid_time=3600
   when: ansible_os_family == 'Debian'
   notify: Restart Shorewall Service 
 
