@@ -6,4 +6,4 @@
 {% endif %}
 
 {% endfor %}
-all  all  {{ default_policy | default('DROP') }}  info
+all  all  {{ shorewall_default_policy | default('DROP') }}  {{ shorewall_default_policy_loglevel | default('info') }}
