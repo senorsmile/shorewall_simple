@@ -37,11 +37,15 @@
   template: src=init.j2 dest={{ shorewall_init_file }}
   notify: Restart Shorewall Service
 
-- name: Generate custom stop rules
+- name: Generate custom stopped rules
+  template: src=stoppedrules.j2 dest={{ shorewall_stoppedrules_file }}
+  notify: Restart Shorewall Service
+
+- name: Generate custom stop script
   template: src=stop.j2 dest={{ shorewall_stop_file }}
   notify: Restart Shorewall Service
 
-- name: Generate custom start rules
+- name: Generate custom start script
   template: src=start.j2 dest={{ shorewall_start_file }}
   notify: Restart Shorewall Service
 

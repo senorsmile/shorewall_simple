@@ -10,3 +10,7 @@ shorewall_config_file: "/etc/shorewall/shorewall.conf"
 shorewall_service_config: "/etc/default/shorewall"
 shorewall_service: "shorewall"
 
+shorewall_init_file: "/etc/shorewall/init"
+shorewall_start_file: "/etc/shorewall/start"
+shorewall_stop_file: "/etc/shorewall/stop"
+shorewall_stoppedrules_file: "/etc/shorewall/stoppedrules"
