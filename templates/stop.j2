@@ -15,3 +15,11 @@ if iptables -t nat -L DOCKER >/dev/null 2>&1; then
 fi
 {#--#}{% endif %}
 {# #}
+
+
+#-----------------------
+### custom rules from ansible variables
+#-----------------------
+{% if shorewall_stop_script is defined %}
+{{ shorewall_stop_script }}
+{% endif %}
