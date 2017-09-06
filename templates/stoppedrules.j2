@@ -1,8 +1,10 @@
 #TARGET         HOST(S)                 DEST      PROTO     DEST        SOURCE
 #                                                           PORT(S)     PORT(S)
 
+{% if shorewall_stopped_rules is defined %}
 {% for r in shorewall_stopped_rules %}
 {{ r.action }}	{% if r.source is defined %}{{ r.source }}{% else %}-{% endif %}	{% if r.destination is defined %}{{ r.destination }}{% else %}-{% endif %}	{% if r.protocol is defined %}{{ r.protocol }}{% else %}-{% endif %}	{% if r.destination_port is defined %}{{ r.destination_port }}{% else %}-{% endif %}	{% if r.source_port is defined %}{{ r.source_port }}{% else %}-{% endif %}
 
 
 {% endfor %}
+{% endif %}
