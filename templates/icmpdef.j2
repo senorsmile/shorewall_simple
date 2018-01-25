@@ -1,0 +1,1 @@
+run_iptables -A icmpdef -p icmp --icmp-type 8 -j {{ shorewall_default_policy }}
