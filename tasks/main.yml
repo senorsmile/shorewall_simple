@@ -96,3 +96,6 @@
 # Enable Shorewall server
 - name: Start the  Shorewall service
   service: name={{ shorewall_service }} state=started enabled=yes
+  when:
+    - shorewall_enabled is defined
+    - shorewall_enabled == 'Yes' 
