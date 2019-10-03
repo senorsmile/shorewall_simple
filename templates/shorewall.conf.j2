@@ -135,6 +135,10 @@ DELETE_THEN_ADD=Yes
 
 DETECT_DNAT_IPADDRS=No
 
+{% if shorewall_docker_fix_needed is defined and not shorewall_docker_fix_needed %}
+DOCKER=Yes
+{% endif %}
+
 DONT_LOAD=
 
 DYNAMIC_BLACKLIST=Yes
