@@ -5,17 +5,17 @@
 
 # Install Shorewall server
 - name: Install the required  packages in Redhat derivatives
-  yum: name={{ shorewall_package }} state=installed
+  yum: name={{ shorewall_package }} state=present
   when: ansible_os_family == 'RedHat'
   notify: Restart Shorewall Service
 
 - name: Install the required packages in Debian derivatives
-  apt: name={{ shorewall_package }} state=installed update_cache=yes cache_valid_time=3600
+  apt: name={{ shorewall_package }} state=present update_cache=yes cache_valid_time=3600
   when: ansible_os_family == 'Debian'
   notify: Restart Shorewall Service
 
 - name: Install the required packages in Arch derivatives
-  pacman: name={{ shorewall_package }} state=installed update_cache=yes
+  pacman: name={{ shorewall_package }} state=present update_cache=yes
   when: ansible_os_family == 'Archlinux'
   notify: Restart Shorewall Service
 
