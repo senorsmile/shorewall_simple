@@ -159,5 +159,5 @@ Author Information
 
 Philippe Dellaert
 
-
+Shaun Smiley (this fork with significant changes)
 
