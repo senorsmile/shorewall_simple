@@ -31,7 +31,7 @@
 # http://shorewall.net/Docker.html
 - set_fact:
     shorewall_docker_fix_needed: True
-  when: shorewall_version | version_compare('5.0.6', '<')
+  when: shorewall_version is version('5.0.6', '<')
 
 - name: Shorewall fix for docker - init
   template: src=init.j2 dest={{ shorewall_init_file }}
