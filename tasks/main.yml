@@ -74,11 +74,13 @@
   template: src=tcrules.j2 dest={{ shorewall_tcrules_file }}
   notify: Restart Shorewall Service
 
-- name: Generate icmp ping definition
-  template:
-    src: icmpdef.j2
-    dest: "{{ shorewall_icmpdef_file }}"
-  notify: Restart Shorewall Service
+# pretty sure icmpdef is not need for shorewall v4 or v5
+# https://shorewall.org/ping.html
+#- name: Generate icmp ping definition
+#  template:
+#    src: icmpdef.j2
+#    dest: "{{ shorewall_icmpdef_file }}"
+#  notify: Restart Shorewall Service
 
 - name: Generate shorewall.conf when < 5.0
   template: 
