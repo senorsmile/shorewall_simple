@@ -1,5 +1,15 @@
-#SOURCE         DEST            POLICY          LOG           BURST:LIMIT
-#                                               LEVEL
+#
+# Shorewall -- /etc/shorewall/policy
+#
+# For information about entries in this file, type "man shorewall-policy"
+#
+# The manpage is also online at
+# https://shorewall.org/manpages/shorewall-policy.html
+#
+###############################################################################
+#SOURCE		DEST		POLICY	LOGLEVEL	RATE	CONNLIMIT
+#                                   RATE = BURST:LIMIT
+
 {% for p in shorewall_policies %}
 {% if p.source is defined and p.source != '' %}
 {{ p.source }}	{{ p.destination }}	{{ p.policy }}	{% if p.log_level is defined %}{{ p.log_level }}{% else %}-{% endif %}	{% if p.burst_limit is defined %}{{ p.burst_limit }}{% else %}-{% endif %}

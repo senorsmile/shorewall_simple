@@ -1,3 +1,15 @@
+#
+# Shorewall -- /etc/shorewall/interfaces
+#
+# For information about entries in this file, type "man shorewall-interfaces"
+#
+# The manpage is also online at
+# https://shorewall.org/manpages/shorewall-interfaces.html
+#
+?FORMAT 2
+###############################################################################
+#ZONE		INTERFACE		OPTIONS
+
 {% for i in shorewall_interfaces %}
 {% if i.zone is defined and i.zone != '' %}
 {{ i.zone }}	{{ i.interface }}	{% if i.broadcast is defined %}{{ i.broadcast }}{% else %}-{% endif %}	{% if i.options is defined %}{{ i.options }}{% else %}-{% endif %}

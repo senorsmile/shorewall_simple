@@ -1,8 +1,18 @@
+#
+# Shorewall -- /etc/shorewall/stop
+#
+# Add commands below that you want to be executed at the beginning of a
+# "shorewall stop" command.
+#
+# See https://shorewall.org/shorewall_extension_scripts.htm for additional
+# information.
+#
+###############################################################################
+{# #}
+{#--#}{% if shorewall_docker_fix_needed is defined and shorewall_docker_fix_needed %}
 #-----------------------
 ### custom rules for docker (if shorewall < v5.0.6)
 #-----------------------
-{# #}
-{#--#}{% if shorewall_docker_fix_needed is defined and shorewall_docker_fix_needed %}
 if iptables -t nat -L DOCKER >/dev/null 2>&1; then
     echo '*nat' >/etc/shorewall/docker_rules
     iptables -t nat -S DOCKER >>/etc/shorewall/docker_rules
@@ -17,9 +27,9 @@ fi
 {# #}
 
 
+{% if shorewall_stop_script is defined %}
 #-----------------------
 ### custom rules from ansible variables
 #-----------------------
-{% if shorewall_stop_script is defined %}
 {{ shorewall_stop_script }}
 {% endif %}
