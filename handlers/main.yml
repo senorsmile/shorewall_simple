@@ -1,3 +1,6 @@
 ---
 - name: Restart Shorewall Service
-  service: name={{ shorewall_service }} state=restarted 
+  service:
+    name: "{{ shorewall_service }}"
+    state: restarted
+  when: ( not shorewall_started.changed )

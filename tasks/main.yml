@@ -61,8 +61,6 @@
     dest: "{{ shorewall_stop_file }}"
   notify: Restart Shorewall Service
 
-- pause:
-
 - name: Generate custom start script
   template:
     src: "start.j2"
@@ -147,5 +145,10 @@
 - name: Start the  Shorewall service
   service:
     name: "{{ shorewall_service }}"
-    state: "started"
     enabled: "yes"
+
+- name: Start the  Shorewall service
+  service:
+    name: "{{ shorewall_service }}"
+    state: "started"
+  register: shorewall_started
