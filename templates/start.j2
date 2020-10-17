@@ -24,6 +24,7 @@ if [ -f /etc/shorewall/docker_rules ]; then
 
     rm -f /etc/shorewall/docker_rules
 fi
+
 {#--#}{% endif %}
 {# #}
 
@@ -32,4 +33,6 @@ fi
 ### custom rules from ansible variables
 #-----------------------
 {{ shorewall_start_script }}
+
 {% endif %}
+return 0
