@@ -88,15 +88,15 @@
 #  notify: Restart Shorewall Service
 
 - name: Generate shorewall.conf when < 5.0
-  template: 
-    src: shorewall.conf.j2 
+  template:
+    src: shorewall.conf.j2
     dest: "{{ shorewall_config_file }}"
   notify: Restart Shorewall Service
   when: ( shorewall_version is version( "5.0", "<" ) )
 
 - name: Generate shorewall.conf when >= 5.0
-  template: 
-    src: v5.shorewall.conf.j2 
+  template:
+    src: v5.shorewall.conf.j2
     dest: "{{ shorewall_config_file }}"
   notify: Restart Shorewall Service
   when: ( shorewall_version is version( "5.0", ">=" ) )
