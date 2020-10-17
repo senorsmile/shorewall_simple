@@ -10,6 +10,7 @@
 ###############################################################################
 {# #}
 {#--#}{% if shorewall_docker_fix_needed is defined and shorewall_docker_fix_needed %}
+
 #-----------------------
 ### custom rules for docker (if shorewall < v5.0.6)
 #-----------------------
@@ -25,9 +26,8 @@ if iptables -t nat -L DOCKER >/dev/null 2>&1; then
 fi
 {#--#}{% endif %}
 {# #}
-
-
 {% if shorewall_stop_script is defined %}
+
 #-----------------------
 ### custom rules from ansible variables
 #-----------------------
