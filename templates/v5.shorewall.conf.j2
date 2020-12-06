@@ -189,7 +189,7 @@ IMPLICIT_CONTINUE=No
 
 IPSET_WARNINGS=Yes
 
-IP_FORWARDING=Keep
+IP_FORWARDING={{ shorewall_ip_forwarding | default('Off') }} # ['On','Off']
 
 KEEP_RT_TABLES=No
 
