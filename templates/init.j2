@@ -1,8 +1,8 @@
+{# #}
+{#--#}{% if shorewall_docker_fix_needed is defined and shorewall_docker_fix_needed %}
 #-----------------------
 ### custom rules for docker (if shorewall < v5.0.6)
 #-----------------------
-{# #}
-{#--#}{% if shorewall_docker_fix_needed is defined and shorewall_docker_fix_needed %}
 if iptables -t nat -L DOCKER >/dev/null 2>&1; then
     echo '*nat' >/etc/shorewall/docker_rules
     iptables -t nat -S DOCKER >>/etc/shorewall/docker_rules
@@ -16,9 +16,9 @@ fi
 {#--#}{% endif %}
 {# #}
 
+{% if shorewall_init_script is defined %}
 #-----------------------
 ### custom script from Ansible
 #-----------------------
-{% if shorewall_init_script is defined %}
 {{ shorewall_init_script }}
 {% endif %}
