@@ -30,6 +30,7 @@
 
 - name: Get version of shorewall
   shell: shorewall version
+  check_mode: no
   changed_when: False
   register: get_shorewall_version
 
