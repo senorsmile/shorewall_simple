@@ -105,6 +105,12 @@
     dest: "{{ shorewall_tcrules_file }}"
   notify: Restart Shorewall Service
 
+- name: Generate snat rules
+  template:
+    src: "snat.j2"
+    dest: "{{ shorewall_snat_file }}"
+  notify: Restart Shorewall Service
+
 # pretty sure icmpdef is not need for shorewall v4 or v5
 # https://shorewall.org/ping.html
 #- name: Generate icmp ping definition

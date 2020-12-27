@@ -1,0 +1,17 @@
+#
+# Shorewall -- /etc/shorewall/snat
+#
+# For information about entries in this file, type "man shorewall-snat"
+#
+# See https://shorewall.org/manpages/shorewall-snat.html for more information
+#
+?FORMAT 2
+###################################################################################################################################################
+#ACTION			SOURCE			DEST		PROTO	DPORT	SPORT	IPSEC	MARK	USER	SWITCH	ORIGDEST	PROBABILITY$
+# 
+{#--#}{% if shorewall_snat is defined %}
+{#----#}{% for r in shorewall_snat %}
+
+{{ r.action }}		{{ r.source }}{% if 'dest' in r %}		{{ r.dest }}{% endif %}{% if 'proto' in r %}		{{ r.proto }}{% endif %}
+{#----#}{% endfor %}
+{#--#}{% endif %}
